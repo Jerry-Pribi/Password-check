@@ -52,7 +52,8 @@ python password_checker.py
 | 2     | Fair           |
 | 3     | Good           |
 | 4     | Strong         |
-| 5+    | Very Strong    |
+| 5     | Very Strong    |
+| 6     | Ultra Strong Password  |
 
 ## How It Works
 
