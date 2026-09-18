@@ -30,7 +30,7 @@ def draw_dradient(canvas, width, height, color1, color2, vertical=True):
             canvas.create_line(0, i, width, i, fill=color)
         else: 
             canvas.create_line(i, 0, i, height, fill=color)
-result_text_id = None  # globální proměnná na ID textu s výsledkem
+result_text_id = None  
 
 def Check():
     global password_input, canvas, result_text_id
@@ -76,18 +76,18 @@ def Check():
     levels = ["Velmi slabé", "Slabé", "Ucházející", "Dobré", "Silné", "Velmi silné", "Ultra silné helso"]
     level = levels[max(0, min(score, 6))]
 
-    # spojíme feedback do čitelného textu, ne jako list
+    
     feedback_text = "\n".join(feedback) if feedback else "Skvělé heslo!"
     display_text = f"Síla hesla: {level}\n{feedback_text}"
 
-    # pokud text s výsledkem už existuje, jen ho aktualizujeme
+   
     if result_text_id is None:
         result_text_id = canvas.create_text(
             250, 300,
             text=display_text,
             font=("Playwrite New Zealand Basic", 14, "bold"),
             fill="white",
-            width=350  # zalomení textu, aby nešel mimo plátno
+            width=350  
         )
     else:
         canvas.itemconfig(result_text_id, text=display_text)
