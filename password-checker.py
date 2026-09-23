@@ -73,21 +73,24 @@ def Check():
             score -= 1
             feedback.append("Nepoužívej opakující se znaky (např. 'aaa').")
 
-    levels = ["Velmi slabé", "Slabé", "Ucházející", "Dobré", "Silné", "Velmi silné", "Ultra silné helso"]
-    level = levels[max(0, min(score, 6))]
+    if password == "":
+        # Prázdné heslo - nezobrazuj žádnou úroveň síly, jen výzvu k zadání
+        display_text = "\n".join(feedback)
+    else:
+        levels = ["Velmi slabé", "Slabé", "Ucházející", "Dobré", "Silné", "Velmi silné", "Ultra silné helso"]
+        level = levels[max(0, min(score, 6))]
 
-    
-    feedback_text = "\n".join(feedback) if feedback else "Skvělé heslo!"
-    display_text = f"Síla hesla: {level}\n{feedback_text}"
+        feedback_text = "\n".join(feedback) if feedback else "Skvělé heslo!"
+        display_text = f"Síla hesla: {level}\n{feedback_text}"
 
-   
     if result_text_id is None:
         result_text_id = canvas.create_text(
-            250, 300,
+            250, 260,
             text=display_text,
             font=("Playwrite New Zealand Basic", 14, "bold"),
             fill="white",
-            width=350  
+            width=350,
+            anchor="n"
         )
     else:
         canvas.itemconfig(result_text_id, text=display_text)
